@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #000;
+    --sec-color: #6a655c;
+}
+
+html {
+    scrollbar-color: var(--sec-color) var(--bg-color);
+}
+
+body {
+    background-color: var(--bg-color);
+    position: relative;
+    height: 90vh;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    padding: 20px;
+    background-color: var(--sec-color);
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.card {
+    height: 280px;
+    width: 175px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.card:hover {
+    background-color: #090909;
+}
+
+.playBtn {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 75%;
+    background-color: var(--sec-color);
+    bottom: 80px;
+    right: 20px;
+}
+
+
+.center {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .songCover {
+    height: 220px;
+    width: 175px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.detail h2 {
+    height: 28px;
+}
+
+.detail h2,
+.detail p {
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.detail {
+    color: white;
+}
+
+.detail p {
+    height: 20px;
+
+}
+
+.playBtn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.playBtn:active {
+    transform: scale(0.95);
+}
+
+.outer {
+    border: 5px solid var(--sec-color);
+    border-radius: 10px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.205);
+    height: 470px;
+}
+
+.musicList {
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 20px;
+    overflow: auto;
+    height: 390px; 
+}
+
+.player{
+    background-color: white;
+    display: flex;
+    padding: 10px ;
+    gap: 10px ;
+}
+
+.player button{
+    padding: 5px ;
+    border: none;
+    background-color: rgb(103, 103, 238);
+    border-radius: 10px ;
+    box-shadow: 0 0 10px ;
+}
+
+.player button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.player button:active{
+    transform: scale(0.98);
+}
