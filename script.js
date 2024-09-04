@@ -16,6 +16,8 @@ function createCard(songCover, songUrl, songName, artistName) {
     musicList.append(card);
 }
 
+const clientId = 'e4370c92';
+
 async function fetchJamendoSongs(songName, clientId, songListLength) {
     try {
         // Make a request to Jamendo API to search for songs
@@ -30,7 +32,7 @@ async function fetchJamendoSongs(songName, clientId, songListLength) {
 
         // Check if there are any results and return the first song's information
         if (data.results.length > 0) {
-            console.log('Songs found:', data.results);
+            // console.log('Songs found:', data.results);
             return data.results.map(track => ({
                 name: track.name,
                 artist: track.artist_name,
@@ -47,21 +49,25 @@ async function fetchJamendoSongs(songName, clientId, songListLength) {
     }
 }
 
-// Usage Example:
-const clientId = 'e4370c92'; // Replace with your Jamendo API client ID
-
-
-async function addCard(songListLength = 20) {
+function getSearchValue() {
     let searchBar = document.getElementById("searchBar");
-    let songs = await fetchJamendoSongs(searchBar.value, clientId, songListLength);
+    return searchBar.value;
+}
+
+async function addCard(songName = `rap`, songListLength = 10) {
+    let songs = await fetchJamendoSongs(songName, clientId, songListLength);
+    // console.log(songs);
+    musicList.innerHTML = '';
     for (let i = 0; i < songListLength; i++) {
         createCard(songs[i].songCover, songs[i].audio, songs[i].name, songs[i].artist);
     }
 }
 
+//Default Card without search
+addCard(getSearchValue());
+
 let searchBtn = document.getElementById("searchBtn");
-searchBtn.addEventListener("click",()=>{
-    addCard();
+searchBtn.addEventListener("click", () => {
+    addCard(getSearchValue());
+    console.log("new Songs Search Complete");
 })
-
-

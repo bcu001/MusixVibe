@@ -30,23 +30,44 @@ a {
     text-decoration: none;
 }
 
-nav .navBar  {
+nav .navBar {
     /* border: 2px solid green ; */
     list-style: none;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    align-items: center;
+    padding: 10px 50px;
     background-color: var(--sec-color);
     color: white;
     border-radius: 10px;
     margin: 10px;
 }
 
-nav .navBar ul{
+nav .navBar ul {
     list-style: none;
     display: flex;
     justify-content: flex-start;
-    gap: 30px ;
+    gap: 30px;
+}
+
+#searchBar {
+    padding: 8px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+}
+
+#searchBtn {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(29, 139, 29);
+    color: white;
+    cursor: pointer;
+}
+
+#searchBtn:active {
+    background-color: green;
 }
 
 .card {
@@ -133,29 +154,29 @@ nav .navBar ul{
     flex-wrap: wrap;
     margin: 20px;
     overflow: auto;
-    height: 390px; 
+    height: 390px;
 }
 
-.player{
+.player {
     background-color: var(--sec-color);
     display: flex;
-    padding: 10px ;
-    gap: 10px ;
+    padding: 10px;
+    gap: 10px;
 }
 
-.player button{
-    padding: 5px ;
+.player button {
+    padding: 5px;
     border: none;
     background-color: rgb(103, 103, 238);
-    border-radius: 10px ;
-    box-shadow: 0 0 10px ;
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
 }
 
-.player button:hover{
+.player button:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
 
-.player button:active{
+.player button:active {
     transform: scale(0.98);
 }
