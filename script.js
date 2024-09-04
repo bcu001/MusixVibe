@@ -5,7 +5,7 @@ function createCard(songCover, songUrl, songName, artistName) {
     card.className = "card";
     card.innerHTML = ` <img class="songCover" src="${songCover}" alt="Raat ki Rani">
                 <div class="playBtn center">
-                    <img src="playBtn.svg" alt="playBtn">
+                    <img src="/asset/img/playBtn.svg" alt="playBtn">
                 </div>
                 <div class="detail">
                     <h2>${songName}</h2>
