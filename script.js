@@ -1,27 +1,67 @@
 let musicList = document.querySelector(".musicList");
 
-function addCard( songCover, songUrl, songName) {
-        let card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = ` <img class="songCover" src="${songCover}" alt="Raat ki Rani">
+function createCard(songCover, songUrl, songName, artistName) {
+    let card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = ` <img class="songCover" src="${songCover}" alt="Raat ki Rani">
                 <div class="playBtn center">
                     <img src="playBtn.svg" alt="playBtn">
                 </div>
                 <div class="detail">
                     <h2>${songName}</h2>
-                    <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, voluptas?</p>
+                    <p class="desc">${artistName}</p>
                 </div>
                 <audio src="${songUrl}" ></audio>`;
 
-        musicList.append(card);
+    musicList.append(card);
 }
 
-addCard("raat ki rani.png","/Raat Ki Rani_320(PagalWorld.com.so).mp3");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
-addCard("song2.jpg", "/song2.mp3", "Bhairava Anthem");
+async function fetchJamendoSongs(songName, clientId, songListLength) {
+    try {
+        // Make a request to Jamendo API to search for songs
+        const response = await fetch(`https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=json&limit=${songListLength}&search=${encodeURIComponent(songName)}`);
+        //   http[s]://api.jamendo.com/<version>/<entity>/<subentity>/?<api_parameter>=<value>
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        // Check if there are any results and return the first song's information
+        if (data.results.length > 0) {
+            console.log('Songs found:', data.results);
+            return data.results.map(track => ({
+                name: track.name,
+                artist: track.artist_name,
+                audio: track.audio,
+                songCover: track.album_image
+            }));
+        } else {
+            console.log('No songs found.');
+            return 'No songs found.';
+        }
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        return 'An error occurred while fetching songs.';
+    }
+}
+
+// Usage Example:
+const clientId = 'e4370c92'; // Replace with your Jamendo API client ID
+
+
+async function addCard(songListLength = 20) {
+    let searchBar = document.getElementById("searchBar");
+    let songs = await fetchJamendoSongs(searchBar.value, clientId, songListLength);
+    for (let i = 0; i < songListLength; i++) {
+        createCard(songs[i].songCover, songs[i].audio, songs[i].name, songs[i].artist);
+    }
+}
+
+let searchBtn = document.getElementById("searchBtn");
+searchBtn.addEventListener("click",()=>{
+    addCard();
+})
+
+

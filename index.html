@@ -10,10 +10,17 @@
 
 <body>
     <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">All Songs</a></li>
+        <ul class="navBar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">All Songs</a></li>
+            </ul>
+            <li>
+                <input type="text" name="searchBar" id="searchBar" placeholder="Enter song name">
+                <button id="searchBtn">Search</button>
+            </li>
         </ul>
+
     </nav>
 
     <div class="outer">
@@ -21,6 +28,7 @@
     </div>
 
     <div class="player center">
+        <audio id="mainSrc" src=""></audio>
         <button class="prev center"><img src="prev.svg" alt=""></button>
         <button class="play center"><img src="playBtn.svg" alt=""></button>
         <button class="next center"><img src="next.svg" alt=""></button>

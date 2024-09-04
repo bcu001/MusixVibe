@@ -30,16 +30,23 @@ a {
     text-decoration: none;
 }
 
-nav ul {
+nav .navBar  {
+    /* border: 2px solid green ; */
     list-style: none;
     display: flex;
-    justify-content: flex-start;
-    gap: 30px;
+    justify-content: space-between;
     padding: 20px;
     background-color: var(--sec-color);
     color: white;
     border-radius: 10px;
     margin: 10px;
+}
+
+nav .navBar ul{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px ;
 }
 
 .card {
@@ -82,6 +89,7 @@ nav ul {
 
 .detail h2 {
     height: 28px;
+    font-size: 1.2em;
 }
 
 .detail h2,
