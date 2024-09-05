@@ -188,11 +188,15 @@ nav .navBar ul {
     }
 
     .card .songCover, .card {
-        width: 240px;
+        width: 210px;
     }
 
     .searchCom{
         display: flex;
         gap: 20px;
+    }
+
+    .musicList{
+        padding: 2px;
     }
 }
