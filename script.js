@@ -11,7 +11,7 @@ function createCard(songCover, songUrl, songName, artistName) {
                     <h2>${songName}</h2>
                     <p class="desc">${artistName}</p>
                 </div>
-                <audio src="${songUrl}" ></audio>`;
+                <audio id="audio" src="${songUrl}" ></audio>`;
 
     musicList.append(card);
 }
@@ -60,6 +60,7 @@ async function addCard(songName = `rap`, songListLength = 10) {
     musicList.innerHTML = '';
     for (let i = 0; i < songListLength; i++) {
         createCard(songs[i].songCover, songs[i].audio, songs[i].name, songs[i].artist);
+        // Change "dummy" into songs.[i].audio
     }
 }
 

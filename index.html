@@ -15,8 +15,8 @@
             <ul>
                 <li><a href="/index.html">Home</a></li>
             </ul>
-            <li>
-                <input type="text" name="searchBar" id="searchBar" placeholder="Enter song name">
+            <li class="searchCom">
+                <input type="search" name="searchBar" id="searchBar" placeholder="Enter song name">
                 <button id="searchBtn">Search</button>
             </li>
         </ul>
@@ -29,12 +29,13 @@
 
     <div class="player center">
         <audio id="mainSrc" src=""></audio>
-        <button class="prev center"><img src="asset/img/prev.svg" alt=""></button>
-        <button class="play center"><img src="asset/img/playBtn.svg" alt=""></button>
-        <button class="next center"><img src="asset/img/next.svg" alt=""></button>
+        <button onclick='document.getElementById("audio").previous()' class="prev center"><img src="asset/img/prev.svg" alt=""></button>
+        <button onclick='document.getElementById("audio").play()' class="play center"><img src="asset/img/playBtn.svg" alt=""></button>
+        <button onclick='document.getElementById("audio").next()' class="next center"><img src="asset/img/next.svg" alt=""></button>
     </div>
 
     <script src="script.js"></script>
+    <script src="spotify.js"></script>
 </body>
 
 </html>

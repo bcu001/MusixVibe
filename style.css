@@ -180,3 +180,19 @@ nav .navBar ul {
 .player button:active {
     transform: scale(0.98);
 }
+
+@media (max-width: 455px) {
+    nav .navBar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card .songCover, .card {
+        width: 240px;
+    }
+
+    .searchCom{
+        display: flex;
+        gap: 20px;
+    }
+}
