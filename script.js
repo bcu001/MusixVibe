@@ -10,8 +10,8 @@ function createCard(songCover, songUrl, songName, artistName) {
                 <div class="detail">
                     <h2>${songName}</h2>
                     <p class="desc">${artistName}</p>
-                </div>
-                <audio id="audio" src="${songUrl}" ></audio>`;
+                </div>`;
+                // <audio id="audio" src="${songUrl}" ></audio>`;
 
     musicList.append(card);
 }
