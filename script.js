@@ -1,8 +1,9 @@
 let musicList = document.querySelector(".musicList");
 
-function createCard(songCover, songUrl, songName, artistName) {
+function createCard(songCover, songId, songName, artistName) {
     let card = document.createElement("div");
     card.className = "card";
+    card.setAttribute('id', songId);
     card.innerHTML = ` <img class="songCover" src="${songCover}" alt="Raat ki Rani">
                 <div class="playBtn center">
                     <img src="asset/img/playBtn.svg" alt="playBtn">
@@ -32,12 +33,13 @@ async function fetchJamendoSongs(songName, clientId, songListLength) {
 
         // Check if there are any results and return the first song's information
         if (data.results.length > 0) {
-            // console.log('Songs found:', data.results);
+            console.log('Songs found:', data.results);
             return data.results.map(track => ({
                 name: track.name,
                 artist: track.artist_name,
                 audio: track.audio,
-                songCover: track.album_image
+                songCover: track.album_image,
+                id: track.id
             }));
         } else {
             console.log('No songs found.');
@@ -59,7 +61,7 @@ async function addCard(songName = `rap`, songListLength = 10) {
     // console.log(songs);
     musicList.innerHTML = '';
     for (let i = 0; i < songListLength; i++) {
-        createCard(songs[i].songCover, songs[i].audio, songs[i].name, songs[i].artist);
+        createCard(songs[i].songCover, songs[i].id, songs[i].name, songs[i].artist);
         // Change "dummy" into songs.[i].audio
     }
 }

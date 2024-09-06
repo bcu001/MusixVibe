@@ -5,7 +5,10 @@
 
 :root {
     --bg-color: #000;
-    --sec-color: #6a655c;
+    --sec-color: white;
+    --font-color: black;
+    /* --sec-color: #6a655c; */
+    --active-color: rgb(199, 195, 195);
 }
 
 html {
@@ -38,9 +41,6 @@ nav .navBar {
     align-items: center;
     padding: 10px 50px;
     background-color: var(--sec-color);
-    color: white;
-    border-radius: 10px;
-    margin: 10px;
 }
 
 nav .navBar ul {
@@ -50,10 +50,23 @@ nav .navBar ul {
     gap: 30px;
 }
 
+nav .navBar ul li {
+    background-color: rgb(68, 68, 68);
+    border: 2px solid black;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav .navBar ul li:active {
+    background-color: rgb(54, 53, 53);
+}
+
 #searchBar {
     padding: 8px;
     width: 200px;
-    border: none;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
@@ -64,6 +77,11 @@ nav .navBar ul {
     background-color: rgb(29, 139, 29);
     color: white;
     cursor: pointer;
+}
+
+.searchCom {
+    display: flex;
+    gap: 20px;
 }
 
 #searchBtn:active {
@@ -85,20 +103,12 @@ nav .navBar ul {
 
 .playBtn {
     position: absolute;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 75%;
-    background-color: var(--sec-color);
+    background-color: white;
     bottom: 80px;
     right: 20px;
-}
-
-
-.center {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .card .songCover {
@@ -136,6 +146,7 @@ nav .navBar ul {
 }
 
 .playBtn:active {
+    background-color: var(--active-color);
     transform: scale(0.95);
 }
 
@@ -160,11 +171,11 @@ nav .navBar ul {
 .player {
     background-color: var(--sec-color);
     display: flex;
-    padding: 10px;
+    padding: 15px;
     gap: 10px;
 }
 
-.player button {
+.player img {
     padding: 5px;
     border: none;
     background-color: rgb(103, 103, 238);
@@ -172,12 +183,12 @@ nav .navBar ul {
     box-shadow: 0 0 10px;
 }
 
-.player button:hover {
+.player img:hover {
     cursor: pointer;
     transform: scale(1.05);
 }
 
-.player button:active {
+.player img:active {
     transform: scale(0.98);
 }
 
@@ -187,16 +198,18 @@ nav .navBar ul {
         gap: 10px;
     }
 
-    .card .songCover, .card {
+    .card .songCover,
+    .card {
         width: 210px;
     }
 
-    .searchCom{
+    .searchCom {
         display: flex;
         gap: 20px;
     }
 
-    .musicList{
-        padding: 2px;
+    .musicList {
+        padding: 0;
+        gap: 0;
     }
 }
