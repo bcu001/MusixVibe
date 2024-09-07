@@ -171,6 +171,9 @@ nav .navBar ul li:active {
 .player {
     background-color: var(--sec-color);
     display: flex;
+    width: 300px;
+    margin: auto;
+    border-radius: 5px;
     padding: 15px;
     gap: 10px;
 }
