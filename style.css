@@ -158,7 +158,7 @@ nav .navBar ul li:active {
     height: 470px;
 }
 
-.musicList {
+#musicList {
     padding: 20px;
     display: flex;
     gap: 30px;
@@ -192,6 +192,43 @@ nav .navBar ul li:active {
     transform: scale(0.98);
 }
 
+#loading {
+    width: 100px;
+    height: 100px;
+    border: 5px solid grey;
+    border-top: 5px solid white;
+    border-radius: 75%;
+    animation: spin 1s infinite ease-in-out;
+}
+
+#retry,
+#homePage {
+    padding: 100px 100px;
+    background-color: #121212;
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    animation: heartBeat 2s infinite alternate-reverse;
+}
+
+@keyframes heartBeat {
+    100% {
+        transform: scale(1.05);
+    }
+
+    0% {
+        transform: scale(0.95);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media (max-width: 455px) {
     nav .navBar {
         flex-direction: column;
@@ -208,8 +245,13 @@ nav .navBar ul li:active {
         gap: 20px;
     }
 
-    .musicList {
+    #musicList {
         padding: 0;
         gap: 0;
+    }
+
+    #retry,
+    #homePage {
+        padding: 50px 30px;
     }
 }

@@ -1,4 +1,16 @@
-let musicList = document.querySelector(".musicList");
+let musicList = document.getElementById("musicList");
+
+const clientId = 'e4370c92';
+
+let songs;
+let isSongsFetched = false;
+
+let loader = document.createElement("div");
+loader.setAttribute("id", "loading");
+
+let retry = document.createElement("div");
+retry.setAttribute("id", "retry");
+retry.className = "center";
 
 function createCard(songCover, songId, songName, artistName) {
     let card = document.createElement("div");
@@ -12,16 +24,13 @@ function createCard(songCover, songId, songName, artistName) {
                     <h2>${songName}</h2>
                     <p class="desc">${artistName}</p>
                 </div>`;
-                // <audio id="audio" src="${songUrl}" ></audio>`;
 
     musicList.append(card);
 }
 
-const clientId = 'e4370c92';
-
 async function fetchJamendoSongs(songName, clientId, songListLength) {
     try {
-        // Make a request to Jamendo API to search for songs
+
         const response = await fetch(`https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=json&limit=${songListLength}&search=${encodeURIComponent(songName)}`);
         //   http[s]://api.jamendo.com/<version>/<entity>/<subentity>/?<api_parameter>=<value>
 
@@ -34,6 +43,7 @@ async function fetchJamendoSongs(songName, clientId, songListLength) {
         // Check if there are any results and return the first song's information
         if (data.results.length > 0) {
             console.log('Songs found:', data.results);
+            isSongsFetched = true;
             return data.results.map(track => ({
                 name: track.name,
                 artist: track.artist_name,
@@ -43,11 +53,11 @@ async function fetchJamendoSongs(songName, clientId, songListLength) {
             }));
         } else {
             console.log('No songs found.');
-            return 'No songs found.';
+            return true;
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-        return 'An error occurred while fetching songs.';
+        return false;
     }
 }
 
@@ -56,21 +66,43 @@ function getSearchValue() {
     return searchBar.value;
 }
 
-async function addCard(songName = `rap`, songListLength = 10) {
-    let songs = await fetchJamendoSongs(songName, clientId, songListLength);
+async function addCard(songName = `hindi`, songListLength = 10) {
+    musicList.className = "center";
+    musicList.innerHTML = '';
+    musicList.append(loader);
+    songs = await fetchJamendoSongs(songName, clientId, songListLength);
+
+
     // console.log(songs);
     musicList.innerHTML = '';
-    for (let i = 0; i < songListLength; i++) {
-        createCard(songs[i].songCover, songs[i].id, songs[i].name, songs[i].artist);
-        // Change "dummy" into songs.[i].audio
+    if (songs === false) {
+        retry.innerHTML = "No Internet";
+        musicList.append(retry);
+    }
+    else if (songs === true) {
+        retry.innerHTML = "No Result";
+        musicList.append(retry);
+    }
+    else {
+        musicList.removeAttribute("class")
+        for (let i = 0; i < songListLength; i++) {
+            createCard(songs[i].songCover, songs[i].id, songs[i].name, songs[i].artist);
+        }
     }
 }
-
-//Default Card without search
-addCard(getSearchValue());
 
 let searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click", () => {
     addCard(getSearchValue());
     console.log("new Songs Search Complete");
 })
+
+let searchBar = document.getElementById("searchBar");
+searchBar.addEventListener("keydown", (e) => {
+    if (e.key == 'Enter') {
+        addCard(getSearchValue());
+        console.log("new Songs Search Complete");
+    }
+})
+
+
