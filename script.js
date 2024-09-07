@@ -116,7 +116,7 @@ function getCardId() {
         button.addEventListener('click', () => {
             currentSongNumber = button.parentElement.id;
 
-            if (isSongsFetched && !songPlaying) {
+            if (isSongsFetched) {
                 console.log("Playing Song")
                 mainAudioPlayer.src = api_Data[currentSongNumber].audio;
                 mainAudioPlayer.play();
