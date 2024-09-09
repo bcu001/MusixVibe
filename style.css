@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -12,11 +14,12 @@
 }
 
 html {
-    scrollbar-color: var(--sec-color) var(--bg-color);
+    scrollbar-color: var(--sec-color) white;
 }
 
 body {
-    background-color: var(--bg-color);
+    font-family: "Poppins", sans-serif;
+    background-color: white;
     position: relative;
     height: 90vh;
 }
@@ -34,43 +37,36 @@ a {
 }
 
 nav .navBar {
-    /* border: 2px solid green ; */
+    /* border: 2px solid green; */
+    width: 100vw;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 10px 50px;
-    background-color: var(--sec-color);
+    background-color: black;
+    margin-bottom: 10px;
 }
 
-nav .navBar ul {
-    list-style: none;
+nav .navBar li {
     display: flex;
-    justify-content: flex-start;
-    gap: 30px;
-}
-
-nav .navBar ul li {
-    background-color: rgb(68, 68, 68);
-    border: 2px solid black;
-    padding: 5px 15px;
-    border-radius: 5px;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4em;
     font-weight: bold;
     cursor: pointer;
-}
 
-nav .navBar ul li:active {
-    background-color: rgb(54, 53, 53);
 }
 
 #searchBar {
-    padding: 8px;
-    width: 200px;
-    border: 2px solid black;
+    padding: 10px;
+    margin: auto;
+    width: 90vw;
+    border: 0;
+    font-size: 1em;
     border-radius: 5px;
+    background-color: rgb(233, 228, 228);
 }
 
 #searchBtn {
+    display: none;
     padding: 8px;
     border: none;
     border-radius: 5px;
@@ -89,6 +85,7 @@ nav .navBar ul li:active {
 }
 
 .card {
+    background-color: rgba(128, 128, 128, 0.253);
     height: 280px;
     width: 175px;
     border-radius: 10px;
@@ -98,7 +95,8 @@ nav .navBar ul li:active {
 }
 
 .card:hover {
-    background-color: #090909;
+    
+    background-color: rgba(128, 128, 128, 0.39);
 }
 
 .playBtn {
@@ -132,7 +130,7 @@ nav .navBar ul li:active {
 }
 
 .detail {
-    color: white;
+    color: black;
 }
 
 .detail p {
@@ -151,25 +149,24 @@ nav .navBar ul li:active {
 }
 
 .outer {
-    border: 5px solid var(--sec-color);
+    /* border: 2px solid black; */
     border-radius: 10px;
-    margin: 10px;
-    background-color: rgba(0, 0, 0, 0.205);
-    height: 470px;
+    height: 430px;
 }
 
 #musicList {
+    /* border: 2px solid green; */
     padding: 20px;
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
     margin: 20px;
     overflow: auto;
-    height: 390px;
+    height: 370px;
 }
 
 .player {
-    background-color: var(--sec-color);
+    background-color: black;
     display: flex;
     width: 300px;
     margin: auto;
@@ -250,11 +247,17 @@ nav .navBar ul li:active {
 
     #musicList {
         padding: 0;
-        gap: 0;
+        gap: 25px;
+        justify-content: center;
     }
 
     #retry,
     #homePage {
         padding: 50px 25px;
+    }
+
+    .player{
+        width: 100vw;
+        border-radius: 0;
     }
 }

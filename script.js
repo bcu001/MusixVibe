@@ -109,6 +109,8 @@ searchBar.addEventListener("keydown", (e) => {
     }
 })
 
+addCard();pq
+
 
 let currentSongNumber;
 function getCardId() {
@@ -145,5 +147,3 @@ play.addEventListener("click", (newSong = 0) => {
         songPlaying = !songPlaying;
     }
 })
-
-
