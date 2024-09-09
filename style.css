@@ -21,7 +21,7 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: white;
     position: relative;
-    height: 90vh;
+    height: 100vh;
 }
 
 a:link {
@@ -38,7 +38,7 @@ a {
 
 nav .navBar {
     /* border: 2px solid green; */
-    width: 100vw;
+    width: auto;
     list-style: none;
     padding: 10px 50px;
     background-color: black;
@@ -149,9 +149,10 @@ nav .navBar li {
 }
 
 .outer {
+    display: flex;
     /* border: 2px solid black; */
     border-radius: 10px;
-    height: 430px;
+    height: 70vh;
 }
 
 #musicList {
@@ -162,7 +163,7 @@ nav .navBar li {
     flex-wrap: wrap;
     margin: 20px;
     overflow: auto;
-    height: 370px;
+    flex: 1;
 }
 
 .player {
@@ -230,6 +231,12 @@ nav .navBar li {
 }
 
 @media (max-width: 455px) {
+    body{
+        /* display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+    }
     nav .navBar {
         flex-direction: column;
         gap: 10px;
@@ -257,7 +264,8 @@ nav .navBar li {
     }
 
     .player{
-        width: 100vw;
+        width: auto;
         border-radius: 0;
+        margin: 0;
     }
 }
