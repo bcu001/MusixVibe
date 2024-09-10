@@ -150,7 +150,6 @@ nav .navBar li {
 
 .outer {
     display: flex;
-    flex: 1;
     border-radius: 10px;
     height: 75vh;
     /* margin-bottom: 19px; */
