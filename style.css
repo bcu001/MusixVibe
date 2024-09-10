@@ -17,6 +17,8 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: "Poppins", sans-serif;
     background-color: var(--bg-color);
     position: relative;
@@ -148,8 +150,10 @@ nav .navBar li {
 
 .outer {
     display: flex;
+    flex: 1;
     border-radius: 10px;
-    height: 74vh;
+    height: 75vh;
+    /* margin-bottom: 19px; */
 }
 
 #musicList {
@@ -166,8 +170,8 @@ nav .navBar li {
     background-color: var(--sec-color);
     display: flex;
     width: auto;
-    padding: 13.5px;
-    gap: 10px;
+    gap: 25px;
+    flex: 1;
 }
 
 .player img {
