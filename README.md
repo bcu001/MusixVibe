@@ -11,7 +11,7 @@
 
 ## Demo
 
-Check out the live demo of MusicVibe [here](https://bcu001.github.io/MuxicPlayer/).
+Check out the live demo of MusicVibe [here](https://bcu001.github.io/MusixVibe/).
 
 ## Installation
 
