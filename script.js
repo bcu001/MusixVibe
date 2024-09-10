@@ -7,6 +7,8 @@ let songs;
 let isSongsFetched = false;
 let songPlaying = false;
 let mainAudioPlayer = new Audio;
+let currentSongNumber;
+let songTotalNumber;
 
 let loader = document.createElement("div");
 loader.setAttribute("id", "loading");
@@ -43,6 +45,11 @@ async function fetchJamendoSongs(songName, clientId, songListLength) {
 
         const data = await response.json();
         api_Data = data.results;
+        console.log(api_Data);
+
+        songTotalNumber = (api_Data.length > 0) ? (api_Data.length - 1) : api_Data.length;
+        console.log(songTotalNumber);
+
         // Check if there are any results and return the first song's information
         if (data.results.length > 0) {
             console.log('Songs found:', api_Data);
@@ -109,41 +116,74 @@ searchBar.addEventListener("keydown", (e) => {
     }
 })
 
-addCard();pq
+addCard();
 
 
-let currentSongNumber;
+
 function getCardId() {
     document.querySelectorAll('.playBtn').forEach(button => {
         button.addEventListener('click', () => {
             currentSongNumber = button.parentElement.id;
 
             if (isSongsFetched) {
-                console.log("Playing Song")
-                mainAudioPlayer.src = api_Data[currentSongNumber].audio;
-                mainAudioPlayer.play();
-                songPlaying = true;
-                console.log(button.childNodes[1])
-                button.childNodes[1].src = songPlaying ? 'asset/img/playBtn.svg' : 'asset/img/pause.svg';
+                currSongPlay();
+                // button.childNodes[1].src = songPlaying ? 'asset/img/playBtn.svg' : 'asset/img/pause.svg';
+                // toggleBtn();
             }
         });
     });
 }
 
+function toggleBtn() {
+    play.src = songPlaying ? 'asset/img/playBtn.svg' : 'asset/img/pause.svg';
+    songPlaying = !songPlaying;
+}
 
+function nextSongPlay() {
+    if (currentSongNumber == songTotalNumber) {
+        currentSongNumber = 0;
+    }
+    else if (currentSongNumber < songTotalNumber) {
+        currentSongNumber++;
+    }
+    console.log("next song");
+}
 
-let play = document.getElementById("play");
-play.addEventListener("click", (newSong = 0) => {
+function prevSongPlay() {
+    if (currentSongNumber == 0) {
+        currentSongNumber = songTotalNumber
+    }
+    else {
+        currentSongNumber--;
+    }
+    console.log("previous song");
+}
+
+function currSongPlay() {
     if (isSongsFetched) {
         if (songPlaying) {
             mainAudioPlayer.pause();
             console.log("Pause Music")
         }
         else {
+            mainAudioPlayer.src = api_Data[currentSongNumber].audio;
             mainAudioPlayer.play();
             console.log("playing Music");
         }
-        play.src = songPlaying ? 'asset/img/playBtn.svg' : 'asset/img/pause.svg';
-        songPlaying = !songPlaying;
+        toggleBtn();
     }
+}
+
+let play = document.getElementById("play");
+play.addEventListener("click", () => {
+    currSongPlay();
 })
+
+let prev = document.getElementById("prev").addEventListener("click", () => {
+    prevSongPlay();
+    currSongPlay();
+});
+let next = document.getElementById("next").addEventListener("click", () => {
+    nextSongPlay();
+    currSongPlay();
+});
