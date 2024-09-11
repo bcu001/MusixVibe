@@ -1,4 +1,5 @@
 let musicList = document.getElementById("musicList");
+let CardSelectedColor = '#4A90E2';
 
 const clientId = 'e4370c92';
 
@@ -126,12 +127,18 @@ function getCardId() {
             currentSongNumber = button.parentElement.id;
 
             if (isSongsFetched) {
+                changeMainSong();
                 currSongPlay();
+                toggleBtn();
                 // button.childNodes[1].src = songPlaying ? 'asset/img/playBtn.svg' : 'asset/img/pause.svg';
                 // toggleBtn();
             }
         });
     });
+}
+
+function changeMainSong() {
+    mainAudioPlayer.src = api_Data[currentSongNumber].audio;
 }
 
 function toggleBtn() {
@@ -140,22 +147,26 @@ function toggleBtn() {
 }
 
 function nextSongPlay() {
+    selectCard('#D3D3D3');
     if (currentSongNumber == songTotalNumber) {
         currentSongNumber = 0;
     }
     else if (currentSongNumber < songTotalNumber) {
         currentSongNumber++;
     }
+    selectCard(CardSelectedColor)
     console.log("next song");
 }
 
 function prevSongPlay() {
+    selectCard('#D3D3D3');
     if (currentSongNumber == 0) {
         currentSongNumber = songTotalNumber
     }
     else {
         currentSongNumber--;
     }
+    selectCard(CardSelectedColor)
     console.log("previous song");
 }
 
@@ -166,24 +177,46 @@ function currSongPlay() {
             console.log("Pause Music")
         }
         else {
-            mainAudioPlayer.src = api_Data[currentSongNumber].audio;
+            selectCard(CardSelectedColor);
             mainAudioPlayer.play();
             console.log("playing Music");
         }
-        toggleBtn();
     }
+}
+
+function selectCard(color) {
+    if (currentSongNumber != undefined)
+        document.getElementById(currentSongNumber).style.backgroundColor = color;
 }
 
 let play = document.getElementById("play");
 play.addEventListener("click", () => {
-    currSongPlay();
+    // if(currentSongNumber == undefined){
+    //     currentSongNumber = 0;
+    //     selectCard(cardSelectedColor);
+    //     toggleBtn();
+    //     mainAudioPlayer.play();
+    //     console.log(currentSongNumber);
+    // }
+    // else{
+
+    //     currSongPlay();
+    //     toggleBtn();
+    // }
+    if (currentSongNumber != undefined) {
+        currSongPlay();
+        toggleBtn();
+    }
 })
 
 let prev = document.getElementById("prev").addEventListener("click", () => {
     prevSongPlay();
+    changeMainSong();
     currSongPlay();
 });
+
 let next = document.getElementById("next").addEventListener("click", () => {
     nextSongPlay();
+    changeMainSong();
     currSongPlay();
 });
