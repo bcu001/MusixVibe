@@ -10,6 +10,8 @@
     --sec-color: black;
     --primary-font-color: black;
     --sec-font-color: white;
+    --card-color:#D3D3D3;
+    --selected-card-color:#4A90E2;
 }
 
 html {
@@ -85,7 +87,7 @@ nav .navBar li {
 }
 
 .card {
-    background-color: rgba(128, 128, 128, 0.253);
+    background-color: var(--card-color);
     height: 280px;
     width: 175px;
     border-radius: 10px;
@@ -96,7 +98,7 @@ nav .navBar li {
 
 .card:hover {
 
-    background-color: rgba(128, 128, 128, 0.39);
+    background-color: #B0B0B0;
 }
 
 .playBtn {
@@ -152,7 +154,6 @@ nav .navBar li {
     display: flex;
     border-radius: 10px;
     height: 75vh;
-    /* margin-bottom: 19px; */
 }
 
 #musicList {
@@ -176,7 +177,7 @@ nav .navBar li {
 .player img {
     padding: 5px;
     border: none;
-    background-color: rgb(103, 103, 238);
+    background-color: var(--selected-card-color);
     border-radius: 10px;
     box-shadow: 0 0 10px;
 }
